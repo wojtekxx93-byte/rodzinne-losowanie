@@ -51,7 +51,6 @@ function renderParticipant(person) {
   byId('greeting').textContent = 'Cześć, ' + person.name + '!';
   byId('wishes').value = person.wishes;
   byId('ready').checked = person.ready;
-  byId('ready').disabled = person.drawn;
   byId('reveal').hidden = !person.drawn || !!person.recipient;
   byId('draw-state').textContent = person.drawn
     ? (person.recipient ? '' : 'Możesz już odkryć wynik.')
@@ -59,13 +58,13 @@ function renderParticipant(person) {
   byId('result').hidden = !person.recipient;
   if (person.recipient) {
     byId('recipient').textContent = 'Prezent dla: ' + person.recipient.name;
-    byId('recipient-wishes').textContent = person.recipient.wishes.trim() || 'Lista jest pusta.';
+    byId('recipient-wishes').textContent = person.recipient.wishes.trim() ||
+      'Wylosowana osoba nie przygotowała jeszcze listy życzeń.';
   }
 }
 
 function updateDrawButton() {
-  byId('draw').disabled = adminState.drawn || adminState.people.length < 2 ||
-    adminState.people.some(person => !person.ready);
+  byId('draw').disabled = adminState.drawn || adminState.people.length < 2;
 }
 
 function renderAdmin(data) {
