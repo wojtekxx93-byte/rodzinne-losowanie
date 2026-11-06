@@ -1,0 +1,4 @@
+window.giftConfig = {
+  url: '',
+  publicKey: ''
+};

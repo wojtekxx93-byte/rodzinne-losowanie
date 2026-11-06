@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <title>Rodzinne losowanie prezentów</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="config.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="tag">ŚWIĄTECZNA WYMIANA PREZENTÓW</span>
+      <h1>Rodzinne losowanie</h1>
+      <p>Zapisz swoje pomysły. Odkryj, komu sprawisz prezent.</p>
+    </header>
+    <p id="status" role="status" aria-live="polite"></p>
+    <section id="welcome" hidden>
+      <h2>Otwórz zaproszenie</h2>
+      <p>Użyj prywatnego linku od organizatora, aby dodać listę życzeń i poznać wynik.</p>
+      <a href="?organizator">Panel organizatora</a>
+    </section>
+    <section id="login" hidden>
+      <h2>Panel organizatora</h2>
+      <form id="login-form">
+        <label for="admin-key">Prywatny klucz organizatora</label>
+        <input id="admin-key" type="password" required autocomplete="off" spellcheck="false">
+        <button>Otwórz panel</button>
+      </form>
+    </section>
+    <section id="admin" hidden>
+      <h2>Uczestnicy</h2>
+      <p id="progress"></p>
+      <ul id="people"></ul>
+      <form id="add-form">
+        <label for="names">Dodaj uczestników, po jednym w wierszu</label>
+        <textarea id="names" rows="4" required></textarea>
+        <button>Dodaj uczestników</button>
+      </form>
+      <button id="draw" type="button">Uruchom losowanie</button>
+      <button id="refresh" class="secondary" type="button">Odśwież statusy</button>
+    </section>
+    <section id="participant" hidden>
+      <h2 id="greeting"></h2>
+      <p id="draw-state"></p>
+      <button id="reveal" type="button" hidden>Losuj</button>
+      <div id="result" hidden>
+        <h3 id="recipient"></h3>
+        <p id="recipient-wishes" class="wishes"></p>
+      </div>
+      <form id="wish-form">
+        <label for="wishes">Moja lista życzeń</label>
+        <p class="hint">Wpisz pomysły, linki do sklepów i szczegóły, np. rozmiar lub kolor.</p>
+        <textarea id="wishes" rows="6" maxlength="6000"></textarea>
+        <label class="check"><input id="ready" type="checkbox"> Moja lista jest gotowa</label>
+        <button>Zapisz listę</button>
+      </form>
+    </section>
+    <noscript>Włącz JavaScript, aby użyć strony.</noscript>
+  </main>
+</body>
+</html>
